@@ -1,10 +1,13 @@
-import  { lazy } from "react";
+import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-const About = lazy(() => import("./About"));
-const Home = lazy(() => import("./Home"));
+import About from "./About";
+import Home from "./Home";
 
 const App = () => (
   <Router>
+    <Link to="/about">About</Link>
+    <br />
+    <Link to="/">Home</Link>
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="about" element={<About />}></Route>
