@@ -1,28 +1,15 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import About from "./About";
-import Home from "./Home";
+const About = lazy(() => import("./About"));
+const Home = lazy(() => import("./Home"));
 
-const App: React.FC = () => (
+const App = () => (
   <Router>
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
-    </nav>
     <Routes>
-      <Route path="/about">
-        <About />
-      </Route>
-      <Route path="/">
-        <Home />
-      </Route>
+      <Route path="/" element={<Home />}></Route>
+      <Route path="about" element={<About />}></Route>
     </Routes>
-  </Router>
+  </Router>    
 );
+
 export default App;
